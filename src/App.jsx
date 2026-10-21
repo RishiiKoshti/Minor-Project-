@@ -17,10 +17,10 @@ function Header({ cartCount, search, setSearch, onMenu }) {
   </header>;
 }
 
-function Sidebar({ active, setActive, open }) {
+function Sidebar({ active, setActive, open, compareCount }) {
   return <aside className={`sidebar ${open ? 'open' : ''}`}>
     <div className="sidebar-label">EXPLORE</div>
-    <nav>{navItems.map(([icon, label]) => <button className={active === label ? 'active' : ''} key={label} onClick={() => setActive(label)}><span>{icon}</span>{label}{label === 'Deals' && <em>HOT</em>}</button>)}</nav>
+    <nav>{navItems.map(([icon, label]) => <button className={active === label ? 'active' : ''} key={label} onClick={() => setActive(label)}><span>{icon}</span>{label}{label === 'Deals' ? <em>HOT</em> : label === 'Comparison' && compareCount > 0 ? <em>{compareCount}</em> : null}</button>)}</nav>
     {/* <div className="sidebar-card"><span>✦</span><strong>ElectroHaven<br />Premium</strong><small>Get more. Pay less.</small><button>Discover →</button></div> */}
     {/* <div className="sidebar-footer">© 2024 ElectroHaven<br /><span>Built for the future</span></div> */}
   </aside>;
@@ -41,13 +41,42 @@ function Benefits() {
   return <div className="benefits"><div><span>⌁</span><p><b>Free Shipping</b><small>On all orders above $50</small></p></div><div><span>◌</span><p><b>24/7 Tech Support</b><small>Expert technical assistance</small></p></div><div><span>▣</span><p><b>Secure Payment</b><small>100% encrypted checkout</small></p></div><div><span>↺</span><p><b>Easy Returns</b><small>30-day money back guarantee</small></p></div></div>;
 }
 
-function ProductCard({ product, addToCart, wishlist, toggleWishlist }) {
-  return <article className="product-card"><div className="product-image"><span className="discount">{product.discount}</span><button className={`heart ${wishlist ? 'liked' : ''}`} onClick={() => toggleWishlist(product.id)} aria-label={`Wishlist ${product.name}`}>{wishlist ? '♥' : '♡'}</button><img src={product.image} alt={product.name} /></div><div className="product-info"><h3>{product.name}</h3><p>{product.description}</p><div className="rating"><strong>★ {product.rating}</strong><span>({product.reviews} reviews)</span></div><div className="price-row"><div><b>${product.price}</b><del>${product.oldPrice}</del></div><button className="add-button" onClick={() => addToCart(product)}>Add to cart <span>+</span></button></div></div></article>;
+function ProductCard({ product, addToCart, wishlist, toggleWishlist, comparing, compareLimitReached, toggleCompare }) {
+  return <article className="product-card"><div className="product-image"><span className="discount">{product.discount}</span><button className={`heart ${wishlist ? 'liked' : ''}`} onClick={() => toggleWishlist(product.id)} aria-label={`Wishlist ${product.name}`}>{wishlist ? '♥' : '♡'}</button><img src={product.image} alt={product.name} /></div><div className="product-info"><h3>{product.name}</h3><p>{product.description}</p><div className="rating"><strong>★ {product.rating}</strong><span>({product.reviews} reviews)</span></div><div className="price-row"><div><b>${product.price}</b><del>${product.oldPrice}</del></div><button className="add-button" onClick={() => addToCart(product)}>Add to cart <span>+</span></button></div><button className="compare-button" type="button" aria-pressed={comparing} disabled={compareLimitReached} onClick={() => toggleCompare(product.id)}>{comparing ? 'Remove from comparison' : compareLimitReached ? 'Comparison limit reached' : 'Add to comparison'}</button></div></article>;
 }
 
-function ProductSection({ filter, search, addToCart, wishlist, toggleWishlist }) {
+function ProductSection({ filter, search, addToCart, wishlist, toggleWishlist, compareIds, toggleCompare }) {
   const filtered = products.filter((product) => (filter === 'all' || product.category === filter) && `${product.name} ${product.description}`.toLowerCase().includes(search.toLowerCase()));
-  return <section className="section deals-section" id="deals"><div className="section-head"><div><p className="kicker">CURATED FOR YOU</p><h2>Best Deals</h2></div><button className="text-button">View all <b>→</b></button></div>{filtered.length ? <div className="product-grid">{filtered.map((product) => <ProductCard key={product.id} product={product} addToCart={addToCart} wishlist={wishlist.includes(product.id)} toggleWishlist={toggleWishlist} />)}</div> : <div className="empty-state">No products found. Try another search or category.</div>}</section>;
+  return <section className="section deals-section" id="deals"><div className="section-head"><div><p className="kicker">CURATED FOR YOU</p><h2>Best Deals</h2></div><button className="text-button">View all <b>→</b></button></div>{filtered.length ? <div className="product-grid">{filtered.map((product) => <ProductCard key={product.id} product={product} addToCart={addToCart} wishlist={wishlist.includes(product.id)} toggleWishlist={toggleWishlist} comparing={compareIds.includes(product.id)} compareLimitReached={compareIds.length >= 3 && !compareIds.includes(product.id)} toggleCompare={toggleCompare} />)}</div> : <div className="empty-state">No products found. Try another search or category.</div>}</section>;
+}
+
+const catalogPages = {
+  Phones: { category: 'phones', description: 'Explore smartphones packed with the latest features.' },
+  Laptops: { category: 'laptops', description: 'Find the right laptop for work, study, and play.' },
+  Audio: { category: 'headphones', description: 'Discover headphones and audio gear for every moment.' },
+  Cameras: { category: 'cameras', description: 'Capture every moment with cameras built for creativity.' },
+  Gaming: { category: 'gaming', description: 'Level up with gaming gear and accessories.' },
+  Wearables: { category: 'wearables', description: 'Stay connected and track your day with smart wearables.' },
+  'Smart Home': { category: 'smart home', description: 'Make your home smarter with connected devices.' },
+};
+
+function CatalogPage({ page, search, addToCart, wishlist, toggleWishlist, compareIds, toggleCompare }) {
+  const isDeals = page === 'Deals';
+  const catalog = catalogPages[page];
+  const visibleProducts = products.filter((product) => {
+    const matchesCategory = isDeals ? product.oldPrice > product.price : product.category === catalog.category;
+    return matchesCategory && `${product.name} ${product.description}`.toLowerCase().includes(search.toLowerCase());
+  });
+  const description = isDeals
+    ? 'Shop limited-time savings on our latest electronics and accessories.'
+    : catalog.description;
+
+  return <section className="section catalog-page">
+    <div className="section-head"><div><p className="kicker">{isDeals ? 'LIMITED-TIME OFFERS' : 'SHOP BY CATEGORY'}</p><h1>{isDeals ? 'Hot Deals' : page}</h1><p className="catalog-description">{description}</p></div></div>
+    {visibleProducts.length
+      ? <div className="product-grid">{visibleProducts.map((product) => <ProductCard key={product.id} product={product} addToCart={addToCart} wishlist={wishlist.includes(product.id)} toggleWishlist={toggleWishlist} comparing={compareIds.includes(product.id)} compareLimitReached={compareIds.length >= 3 && !compareIds.includes(product.id)} toggleCompare={toggleCompare} />)}</div>
+      : <div className="empty-state">No products found. Try another search.</div>}
+  </section>;
 }
 
 function Brands() {
@@ -55,8 +84,28 @@ function Brands() {
   return <section className="section brands-section"><div className="section-head"><div><p className="kicker">THE BEST IN TECH</p><h2>Popular Brands</h2></div><button className="text-button">Explore brands <b>→</b></button></div><div className="brand-grid">{['TechCore', 'SonicWave', 'PixelPro', 'NovaByte', 'CloudEdge', 'VoltX'].map((brand, index) => <button className={`brand-card ${selected === brand ? 'selected' : ''}`} onClick={() => setSelected(brand)} key={brand}><span className={`brand-symbol symbol-${index}`}>{['T', 'S', 'P', 'N', 'C', 'V'][index]}</span><strong>{brand}</strong><small>Official store</small></button>)}</div></section>;
 }
 
-function Compare() {
-  return <section className="section compare-section"><div className="section-head"><div><p className="kicker">MAKE THE RIGHT CHOICE</p><h2>Compare Products</h2></div><button className="text-button">View all laptops <b>→</b></button></div><div className="compare-wrap"><table><thead><tr><th>Specifications</th>{compareProducts.map((product) => <th key={product.name}><div className="compare-product"><div className="mini-laptop">▰</div><strong>{product.name}</strong><span>{product.price}</span></div></th>)}</tr></thead><tbody>{[['Display', 'display'], ['Processor', 'processor'], ['RAM', 'ram'], ['Storage', 'storage'], ['Rating', 'rating']].map(([label, key]) => <tr key={key}><th>{label}</th>{compareProducts.map((product) => <td key={product.name}>{key === 'rating' && <span className="stars">★ </span>}{product[key]}</td>)}</tr>)}<tr><th></th>{compareProducts.map((product) => <td key={product.name}><button className="outline-button">Compare now</button></td>)}</tr></tbody></table></div></section>;
+function Compare({ page = false, selectedProducts = [], onRemove, onClear }) {
+  if (page) {
+    const rows = [
+      ['Category', (product) => product.category],
+      ['Product type', (product) => product.type],
+      ['Description', (product) => product.description],
+      ['Price', (product) => `$${product.price}`],
+      ['Original price', (product) => `$${product.oldPrice}`],
+      ['Discount', (product) => product.discount],
+      ['Rating', (product) => `★ ${product.rating} / 5`],
+      ['Reviews', (product) => product.reviews],
+    ];
+
+    return <section className="section compare-section comparison-page">
+      <div className="section-head"><div><p className="kicker">SIDE-BY-SIDE PRODUCT DETAILS</p><h2>Product Comparison</h2><p className="catalog-description">Select up to three products from any category to compare them.</p></div>{selectedProducts.length > 0 && <button className="text-button" onClick={onClear}>Clear all</button>}</div>
+      {selectedProducts.length > 0
+        ? <div className="compare-wrap"><table><thead><tr><th>Specifications</th>{selectedProducts.map((product) => <th key={product.id}><div className="compare-product"><strong>{product.name}</strong><span>${product.price}</span><button className="outline-button" onClick={() => onRemove(product.id)} aria-label={`Remove ${product.name} from comparison`}>Remove</button></div></th>)}</tr></thead><tbody>{rows.map(([label, getValue]) => <tr key={label}><th>{label}</th>{selectedProducts.map((product) => <td key={product.id}>{getValue(product)}</td>)}</tr>)}</tbody></table></div>
+        : <div className="empty-state">No products selected. Browse a category and choose “Add to comparison” on up to three product cards.</div>}
+    </section>;
+  }
+
+  return <section className="section compare-section"><div className="section-head"><div><p className="kicker">MAKE THE RIGHT CHOICE</p><h2>Example Laptop Comparison</h2></div></div><div className="compare-wrap"><table><thead><tr><th>Specifications</th>{compareProducts.map((product) => <th key={product.name}><div className="compare-product"><div className="mini-laptop">▰</div><strong>{product.name}</strong><span>{product.price}</span></div></th>)}</tr></thead><tbody>{[['Display', 'display'], ['Processor', 'processor'], ['RAM', 'ram'], ['Storage', 'storage'], ['Rating', 'rating']].map(([label, key]) => <tr key={key}><th>{label}</th>{compareProducts.map((product) => <td key={product.name}>{key === 'rating' && <span className="stars">★ </span>}{product[key]}</td>)}</tr>)}</tbody></table></div></section>;
 }
 
 function Promos() {
@@ -73,9 +122,12 @@ export default function App() {
   const [search, setSearch] = useState('');
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
+  const [compareIds, setCompareIds] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const cartCount = useMemo(() => cart.reduce((total, item) => total + item.quantity, 0), [cart]);
+  const comparedProducts = useMemo(() => products.filter((product) => compareIds.includes(product.id)), [compareIds]);
   const addToCart = (product) => setCart((current) => current.some((item) => item.id === product.id) ? current.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item) : [...current, { ...product, quantity: 1 }]);
   const toggleWishlist = (id) => setWishlist((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
-  return <div className="app"><Header cartCount={cartCount} search={search} setSearch={setSearch} onMenu={() => setMenuOpen(!menuOpen)} /><Sidebar active={activeNav} setActive={(item) => { setActiveNav(item); setMenuOpen(false); if (item === 'Deals') scrollToDeals(); }} open={menuOpen} /><main><Hero /><CategorySection selected={category} setSelected={setCategory} /><Benefits /><ProductSection filter={category} search={search} addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} /><Brands /><Compare /><Promos /></main><Footer /></div>;
+  const toggleCompare = (id) => setCompareIds((current) => current.includes(id) ? current.filter((item) => item !== id) : current.length < 3 ? [...current, id] : current);
+  return <div className="app"><Header cartCount={cartCount} search={search} setSearch={setSearch} onMenu={() => setMenuOpen(!menuOpen)} /><Sidebar active={activeNav} setActive={(item) => { setActiveNav(item); setMenuOpen(false); }} open={menuOpen} compareCount={compareIds.length} /><main>{activeNav === 'Comparison' ? <Compare page selectedProducts={comparedProducts} onRemove={toggleCompare} onClear={() => setCompareIds([])} /> : activeNav === 'Home' ? <><Hero /><CategorySection selected={category} setSelected={setCategory} /><Benefits /><ProductSection filter={category} search={search} addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} compareIds={compareIds} toggleCompare={toggleCompare} /><Brands /><Compare /><Promos /></> : <CatalogPage page={activeNav} search={search} addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} compareIds={compareIds} toggleCompare={toggleCompare} />}</main><Footer /></div>;
 }
