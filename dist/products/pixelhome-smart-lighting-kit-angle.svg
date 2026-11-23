@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studioBg_pixelhome_smart_lighting_kit_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161c28" />
+      <stop offset="50%" stop-color="#10141f" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <radialGradient id="studioSpot_pixelhome_smart_lighting_kit_angle" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#1e293b" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow_pixelhome_smart_lighting_kit_angle" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+    <filter id="glow_pixelhome_smart_lighting_kit_angle" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <linearGradient id="bulbGrad_pixelhome_smart_lighting_kit_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+  
+  </defs>
+
+  <!-- Studio Ambient Surface -->
+  <rect width="600" height="500" fill="url(#studioBg_pixelhome_smart_lighting_kit_angle)" rx="16" />
+  <ellipse cx="300" cy="240" rx="270" ry="200" fill="url(#studioSpot_pixelhome_smart_lighting_kit_angle)" />
+  
+  <!-- Studio Pedestal Shadow -->
+  <ellipse cx="300" cy="410" rx="210" ry="24" fill="#000000" opacity="0.6" filter="url(#glow_pixelhome_smart_lighting_kit_angle)" />
+
+  <!-- Device Artwork -->
+  <g filter="url(#shadow_pixelhome_smart_lighting_kit_angle)">
+    
+      <g transform="translate(200, 70)">
+        <!-- Bulb Glass Enclosure with RGB Ambient Glow -->
+        <path d="M 50,110 C 20,60 180,60 150,110 C 130,140 125,180 120,200 L 80,200 C 75,180 70,140 50,110 Z" fill="#0f172a" stroke="#ec4899" stroke-width="3" filter="url(#glow_pixelhome_smart_lighting_kit_angle)" />
+        <path d="M 55,108 C 30,65 170,65 145,108 C 127,138 122,175 118,195 L 82,195 C 78,175 73,138 55,108 Z" fill="url(#bulbGrad_pixelhome_smart_lighting_kit_angle)" opacity="0.8" />
+        
+        <!-- Metallic Base Fitting & Screw Threads -->
+        <rect x="80" y="200" width="40" height="35" fill="#64748b" rx="2" />
+        <line x1="80" y1="210" x2="120" y2="210" stroke="#94a3b8" stroke-width="3" />
+        <line x1="80" y1="220" x2="120" y2="220" stroke="#94a3b8" stroke-width="3" />
+        <polygon points="85,235 115,235 100,250" fill="#334155" />
+      </g>
+    
+  </g>
+
+  <!-- Watermark subtle branding -->
+  <g opacity="0.4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="32" y="476" letter-spacing="1">ELECTROHAVEN</text>
+    <text x="568" y="476" text-anchor="end" letter-spacing="0.5">SMART HOME</text>
+  </g>
+</svg>

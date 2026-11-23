@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studioBg_cyberboard_mk80_pro_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161c28" />
+      <stop offset="50%" stop-color="#10141f" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <radialGradient id="studioSpot_cyberboard_mk80_pro_angle" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#1e293b" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow_cyberboard_mk80_pro_angle" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+    <filter id="glow_cyberboard_mk80_pro_angle" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+  </defs>
+
+  <!-- Studio Ambient Surface -->
+  <rect width="600" height="500" fill="url(#studioBg_cyberboard_mk80_pro_angle)" rx="16" />
+  <ellipse cx="300" cy="240" rx="270" ry="200" fill="url(#studioSpot_cyberboard_mk80_pro_angle)" />
+  
+  <!-- Studio Pedestal Shadow -->
+  <ellipse cx="300" cy="410" rx="210" ry="24" fill="#000000" opacity="0.6" filter="url(#glow_cyberboard_mk80_pro_angle)" />
+
+  <!-- Device Artwork -->
+  <g filter="url(#shadow_cyberboard_mk80_pro_angle)">
+    
+      <g transform="translate(70, 110)">
+        <!-- Angled Cyber Keyboard Chassis -->
+        <polygon points="40,0 420,0 460,220 0,220" fill="#0f172a" stroke="#334155" stroke-width="4" />
+        <polygon points="44,4 416,4 454,216 6,216" fill="#1e293b" />
+        
+        <!-- Underglow RGB Ambient Line -->
+        <line x1="8" y1="218" x2="452" y2="218" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" filter="url(#glow_cyberboard_mk80_pro_angle)" />
+
+        <!-- Simulated Matrix of Mechanical Keycaps -->
+        <g fill="#0f172a" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1.5">
+          <!-- Row 1: Function Keys -->
+          <rect x="50" y="20" width="22" height="16" rx="3" fill="#f59e0b" fill-opacity="0.8" /> <!-- ESC Key -->
+          <rect x="80" y="20" width="22" height="16" rx="3" />
+          <rect x="110" y="20" width="22" height="16" rx="3" />
+          <rect x="140" y="20" width="22" height="16" rx="3" />
+          <rect x="180" y="20" width="22" height="16" rx="3" />
+          <rect x="210" y="20" width="22" height="16" rx="3" />
+          <rect x="240" y="20" width="22" height="16" rx="3" />
+          <rect x="270" y="20" width="22" height="16" rx="3" />
+          <rect x="310" y="20" width="22" height="16" rx="3" />
+          <rect x="340" y="20" width="22" height="16" rx="3" />
+          <rect x="370" y="20" width="22" height="16" rx="3" />
+
+          <!-- Row 2: Number Row -->
+          <line x1="45" y1="52" x2="405" y2="52" stroke="#f59e0b" stroke-width="14" stroke-dasharray="20,4" />
+          <!-- Row 3: QWERTY Row -->
+          <line x1="40" y1="76" x2="410" y2="76" stroke="#f59e0b" stroke-width="14" stroke-dasharray="20,4" />
+          <!-- Row 4: Home Row (WASD highlighted) -->
+          <line x1="35" y1="100" x2="415" y2="100" stroke="#f59e0b" stroke-width="14" stroke-dasharray="20,4" />
+          <!-- Row 5: Shift Row -->
+          <line x1="30" y1="124" x2="420" y2="124" stroke="#f59e0b" stroke-width="14" stroke-dasharray="20,4" />
+          <!-- Row 6: Spacebar & Modifiers -->
+          <rect x="140" y="145" width="160" height="20" rx="4" fill="#334155" stroke="#f59e0b" stroke-width="2" />
+        </g>
+
+        <!-- WASD Gaming Accent Cluster -->
+        <rect x="80" y="72" width="22" height="16" rx="3" fill="#ec4899" />
+        <rect x="68" y="96" width="22" height="16" rx="3" fill="#ec4899" />
+        <rect x="94" y="96" width="22" height="16" rx="3" fill="#ec4899" />
+        <rect x="120" y="96" width="22" height="16" rx="3" fill="#ec4899" />
+      </g>
+    
+  </g>
+
+  <!-- Watermark subtle branding -->
+  <g opacity="0.4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="32" y="476" letter-spacing="1">ELECTROHAVEN</text>
+    <text x="568" y="476" text-anchor="end" letter-spacing="0.5">GAMING</text>
+  </g>
+</svg>

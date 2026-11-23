@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studioBg_novabyte_action_camera_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161c28" />
+      <stop offset="50%" stop-color="#10141f" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <radialGradient id="studioSpot_novabyte_action_camera_angle" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#1e293b" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow_novabyte_action_camera_angle" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+    <filter id="glow_novabyte_action_camera_angle" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+  </defs>
+
+  <!-- Studio Ambient Surface -->
+  <rect width="600" height="500" fill="url(#studioBg_novabyte_action_camera_angle)" rx="16" />
+  <ellipse cx="300" cy="240" rx="270" ry="200" fill="url(#studioSpot_novabyte_action_camera_angle)" />
+  
+  <!-- Studio Pedestal Shadow -->
+  <ellipse cx="300" cy="410" rx="210" ry="24" fill="#000000" opacity="0.6" filter="url(#glow_novabyte_action_camera_angle)" />
+
+  <!-- Device Artwork -->
+  <g filter="url(#shadow_novabyte_action_camera_angle)">
+    
+      <g transform="translate(170, 110)">
+        <!-- Protective Armor Chassis -->
+        <rect x="0" y="0" width="260" height="190" rx="24" fill="#0f172a" stroke="#334155" stroke-width="5" />
+        <!-- Corner Rubberized Bumpers -->
+        <rect x="-4" y="-4" width="30" height="30" rx="8" fill="#1e293b" />
+        <rect x="234" y="-4" width="30" height="30" rx="8" fill="#1e293b" />
+        <rect x="-4" y="164" width="30" height="30" rx="8" fill="#1e293b" />
+        <rect x="234" y="164" width="30" height="30" rx="8" fill="#1e293b" />
+
+        <!-- Front Selfie Screen -->
+        <rect x="24" y="35" width="80" height="80" rx="8" fill="#020617" stroke="#475569" stroke-width="2" />
+        <rect x="28" y="39" width="72" height="72" rx="6" fill="#0f172a" />
+        <circle cx="64" cy="75" r="16" fill="#06b6d4" opacity="0.3" />
+        <text x="64" y="100" font-family="sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">4K 60FPS</text>
+
+        <!-- Large Waterproof Optical Lens Ring -->
+        <circle cx="180" cy="95" r="60" fill="#1e293b" stroke="#475569" stroke-width="4" />
+        <circle cx="180" cy="95" r="48" fill="#0b0f19" stroke="#06b6d4" stroke-width="3" />
+        <!-- Multi-coated Glass Elements -->
+        <circle cx="180" cy="95" r="36" fill="#030712" />
+        <circle cx="174" cy="89" r="16" fill="#38bdf8" opacity="0.6" filter="url(#glow_novabyte_action_camera_angle)" />
+        <circle cx="188" cy="103" r="8" fill="#a855f7" opacity="0.5" />
+
+        <!-- Top Red Recording Button -->
+        <rect x="40" y="-12" width="40" height="12" rx="4" fill="#ef4444" />
+        <!-- Front Recording LED Indicator -->
+        <circle cx="34" cy="24" r="4" fill="#ef4444" filter="url(#glow_novabyte_action_camera_angle)" />
+      </g>
+    
+  </g>
+
+  <!-- Watermark subtle branding -->
+  <g opacity="0.4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="32" y="476" letter-spacing="1">ELECTROHAVEN</text>
+    <text x="568" y="476" text-anchor="end" letter-spacing="0.5">CAMERAS</text>
+  </g>
+</svg>

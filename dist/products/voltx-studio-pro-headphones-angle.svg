@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studioBg_voltx_studio_pro_headphones_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161c28" />
+      <stop offset="50%" stop-color="#10141f" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <radialGradient id="studioSpot_voltx_studio_pro_headphones_angle" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#1e293b" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow_voltx_studio_pro_headphones_angle" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+    <filter id="glow_voltx_studio_pro_headphones_angle" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <linearGradient id="caseGrad_voltx_studio_pro_headphones_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+  
+  </defs>
+
+  <!-- Studio Ambient Surface -->
+  <rect width="600" height="500" fill="url(#studioBg_voltx_studio_pro_headphones_angle)" rx="16" />
+  <ellipse cx="300" cy="240" rx="270" ry="200" fill="url(#studioSpot_voltx_studio_pro_headphones_angle)" />
+  
+  <!-- Studio Pedestal Shadow -->
+  <ellipse cx="300" cy="410" rx="210" ry="24" fill="#000000" opacity="0.6" filter="url(#glow_voltx_studio_pro_headphones_angle)" />
+
+  <!-- Device Artwork -->
+  <g filter="url(#shadow_voltx_studio_pro_headphones_angle)">
+    
+      <g transform="translate(170, 70)">
+        <!-- Headband Arc -->
+        <path d="M 40,200 C 40,40 220,40 220,200" fill="none" stroke="#334155" stroke-width="20" stroke-linecap="round" />
+        <!-- Padded Headband Cushion -->
+        <path d="M 65,160 C 65,70 195,70 195,160" fill="none" stroke="#1e293b" stroke-width="14" stroke-linecap="round" />
+        <path d="M 80,140 C 80,85 180,85 180,140" fill="none" stroke="#ec4899" stroke-opacity="0.6" stroke-width="3" stroke-dasharray="8,6" />
+
+        <!-- Left Ear Cup Assembly -->
+        <g transform="translate(10, 160)">
+          <!-- Yoke Fork -->
+          <path d="M 30,0 L 30,50 L 0,80" fill="none" stroke="#64748b" stroke-width="5" />
+          <!-- Ear Cushion Base -->
+          <ellipse cx="25" cy="90" rx="36" ry="56" fill="#0f172a" stroke="#1e293b" stroke-width="3" />
+          <ellipse cx="25" cy="90" rx="26" ry="44" fill="#1e293b" />
+          <!-- Outer Acoustic Shell with Accent Ring -->
+          <ellipse cx="25" cy="90" rx="18" ry="32" fill="#0b0f19" stroke="#ec4899" stroke-width="3" />
+          <!-- Center Brand Badge -->
+          <circle cx="25" cy="90" r="8" fill="#334155" />
+        </g>
+
+        <!-- Right Ear Cup Assembly -->
+        <g transform="translate(190, 160)">
+          <!-- Yoke Fork -->
+          <path d="M 30,0 L 30,50 L 60,80" fill="none" stroke="#64748b" stroke-width="5" />
+          <!-- Ear Cushion Base -->
+          <ellipse cx="35" cy="90" rx="36" ry="56" fill="#0f172a" stroke="#1e293b" stroke-width="3" />
+          <ellipse cx="35" cy="90" rx="26" ry="44" fill="#1e293b" />
+          <!-- Outer Acoustic Shell with Accent Ring -->
+          <ellipse cx="35" cy="90" rx="18" ry="32" fill="#0b0f19" stroke="#ec4899" stroke-width="3" />
+          <!-- Center Brand Badge -->
+          <circle cx="35" cy="90" r="8" fill="#334155" />
+        </g>
+      </g>
+    
+  </g>
+
+  <!-- Watermark subtle branding -->
+  <g opacity="0.4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="32" y="476" letter-spacing="1">ELECTROHAVEN</text>
+    <text x="568" y="476" text-anchor="end" letter-spacing="0.5">HEADPHONES</text>
+  </g>
+</svg>

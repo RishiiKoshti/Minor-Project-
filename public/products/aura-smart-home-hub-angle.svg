@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studioBg_aura_smart_home_hub_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161c28" />
+      <stop offset="50%" stop-color="#10141f" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <radialGradient id="studioSpot_aura_smart_home_hub_angle" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#1e293b" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow_aura_smart_home_hub_angle" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+    <filter id="glow_aura_smart_home_hub_angle" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <linearGradient id="bulbGrad_aura_smart_home_hub_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+  
+  </defs>
+
+  <!-- Studio Ambient Surface -->
+  <rect width="600" height="500" fill="url(#studioBg_aura_smart_home_hub_angle)" rx="16" />
+  <ellipse cx="300" cy="240" rx="270" ry="200" fill="url(#studioSpot_aura_smart_home_hub_angle)" />
+  
+  <!-- Studio Pedestal Shadow -->
+  <ellipse cx="300" cy="410" rx="210" ry="24" fill="#000000" opacity="0.6" filter="url(#glow_aura_smart_home_hub_angle)" />
+
+  <!-- Device Artwork -->
+  <g filter="url(#shadow_aura_smart_home_hub_angle)">
+    
+      <g transform="translate(210, 100)">
+        <!-- Cylindrical Fabric Speaker -->
+        <rect x="20" y="30" width="140" height="220" rx="40" fill="#1e293b" stroke="#334155" stroke-width="3" />
+        <!-- Acoustic Fabric Weave Pattern Simulated -->
+        <rect x="24" y="50" width="132" height="180" fill="#0f172a" />
+        <path d="M 30,60 L 150,60 M 30,80 L 150,80 M 30,100 L 150,100 M 30,120 L 150,120 M 30,140 L 150,140 M 30,160 L 150,160 M 30,180 L 150,180 M 30,200 L 150,200 M 30,220 L 150,220" stroke="#334155" stroke-width="2" stroke-dasharray="4,4" />
+
+        <!-- Glowing Top LED Voice Light Ring -->
+        <ellipse cx="90" cy="30" rx="55" ry="18" fill="#0f172a" stroke="#ec4899" stroke-width="4" filter="url(#glow_aura_smart_home_hub_angle)" />
+        <ellipse cx="90" cy="30" rx="40" ry="12" fill="#020617" />
+        <circle cx="90" cy="30" r="4" fill="#ec4899" />
+      </g>
+    
+  </g>
+
+  <!-- Watermark subtle branding -->
+  <g opacity="0.4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="32" y="476" letter-spacing="1">ELECTROHAVEN</text>
+    <text x="568" y="476" text-anchor="end" letter-spacing="0.5">SMART HOME</text>
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studioBg_voltx_fit_band_4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161c28" />
+      <stop offset="50%" stop-color="#10141f" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <radialGradient id="studioSpot_voltx_fit_band_4" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#1e293b" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow_voltx_fit_band_4" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+    <filter id="glow_voltx_fit_band_4" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <linearGradient id="ringGrad_voltx_fit_band_4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="50%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+  
+  </defs>
+
+  <!-- Studio Ambient Surface -->
+  <rect width="600" height="500" fill="url(#studioBg_voltx_fit_band_4)" rx="16" />
+  <ellipse cx="300" cy="240" rx="270" ry="200" fill="url(#studioSpot_voltx_fit_band_4)" />
+  
+  <!-- Studio Pedestal Shadow -->
+  <ellipse cx="300" cy="410" rx="210" ry="24" fill="#000000" opacity="0.6" filter="url(#glow_voltx_fit_band_4)" />
+
+  <!-- Device Artwork -->
+  <g filter="url(#shadow_voltx_fit_band_4)">
+    
+      <g transform="translate(230, 80)">
+        <!-- Vertical Athletic Strap -->
+        <rect x="30" y="0" width="80" height="340" rx="28" fill="#1e293b" stroke="#334155" stroke-width="3" />
+        <!-- Perforated Sport Holes -->
+        <circle cx="70" cy="30" r="5" fill="#0f172a" />
+        <circle cx="70" cy="60" r="5" fill="#0f172a" />
+        <circle cx="70" cy="280" r="5" fill="#0f172a" />
+        <circle cx="70" cy="310" r="5" fill="#0f172a" />
+
+        <!-- Central Capsule Core -->
+        <rect x="35" y="90" width="70" height="160" rx="24" fill="#090d16" stroke="#475569" stroke-width="3" />
+        <rect x="42" y="105" width="56" height="130" rx="16" fill="#020617" />
+        
+        <!-- Vertical Display Metrics -->
+        <text x="70" y="140" font-family="sans-serif" font-weight="700" font-size="20" fill="#f8fafc" text-anchor="middle">10:42</text>
+        <circle cx="70" cy="180" r="18" fill="none" stroke="#06b6d4" stroke-width="4" stroke-dasharray="80,30" />
+        <text x="70" y="184" font-family="sans-serif" font-weight="700" font-size="10" fill="#22c55e" text-anchor="middle">♥ 74</text>
+      </g>
+    
+  </g>
+
+  <!-- Watermark subtle branding -->
+  <g opacity="0.4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="32" y="476" letter-spacing="1">ELECTROHAVEN</text>
+    <text x="568" y="476" text-anchor="end" letter-spacing="0.5">WEARABLES</text>
+  </g>
+</svg>

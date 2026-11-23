@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studioBg_pixelpro_cinema_body_angle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161c28" />
+      <stop offset="50%" stop-color="#10141f" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <radialGradient id="studioSpot_pixelpro_cinema_body_angle" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#1e293b" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow_pixelpro_cinema_body_angle" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+    <filter id="glow_pixelpro_cinema_body_angle" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+  </defs>
+
+  <!-- Studio Ambient Surface -->
+  <rect width="600" height="500" fill="url(#studioBg_pixelpro_cinema_body_angle)" rx="16" />
+  <ellipse cx="300" cy="240" rx="270" ry="200" fill="url(#studioSpot_pixelpro_cinema_body_angle)" />
+  
+  <!-- Studio Pedestal Shadow -->
+  <ellipse cx="300" cy="410" rx="210" ry="24" fill="#000000" opacity="0.6" filter="url(#glow_pixelpro_cinema_body_angle)" />
+
+  <!-- Device Artwork -->
+  <g filter="url(#shadow_pixelpro_cinema_body_angle)">
+    
+      <g transform="translate(130, 80)">
+        <!-- Top Carrying Handle Rig -->
+        <rect x="60" y="0" width="220" height="24" rx="6" fill="#334155" stroke="#1e293b" stroke-width="2" />
+        <line x1="80" y1="24" x2="80" y2="70" stroke="#334155" stroke-width="12" />
+        <line x1="260" y1="24" x2="260" y2="70" stroke="#334155" stroke-width="12" />
+
+        <!-- Main Cinema Modular Box -->
+        <rect x="60" y="60" width="220" height="190" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="4" />
+        <!-- Side Cooling Ventilation Slits -->
+        <line x1="75" y1="100" x2="75" y2="210" stroke="#ef4444" stroke-width="3" stroke-linecap="round" />
+        <line x1="85" y1="110" x2="85" y2="200" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+
+        <!-- Heavy Cine Prime Lens Assembly -->
+        <rect x="130" y="100" width="160" height="110" rx="8" fill="#1e293b" stroke="#475569" stroke-width="3" />
+        <circle cx="210" cy="155" r="50" fill="#020617" stroke="#06b6d4" stroke-width="3" />
+        <circle cx="210" cy="155" r="38" fill="#0f172a" />
+        <circle cx="205" cy="150" r="18" fill="#38bdf8" opacity="0.6" filter="url(#glow_pixelpro_cinema_body_angle)" />
+
+        <!-- Matte Box Rods & Baseplate -->
+        <rect x="20" y="245" width="300" height="18" rx="6" fill="#1e293b" stroke="#475569" stroke-width="2" />
+        <circle cx="100" cy="254" r="7" fill="#475569" />
+        <circle cx="240" cy="254" r="7" fill="#475569" />
+      </g>
+    
+  </g>
+
+  <!-- Watermark subtle branding -->
+  <g opacity="0.4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+    <text x="32" y="476" letter-spacing="1">ELECTROHAVEN</text>
+    <text x="568" y="476" text-anchor="end" letter-spacing="0.5">CAMERAS</text>
+  </g>
+</svg>
